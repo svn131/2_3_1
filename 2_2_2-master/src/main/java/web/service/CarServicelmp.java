@@ -37,7 +37,7 @@ public class CarServicelmp implements CarService {
     @Override
     public List<String> getsubList(List<Car> cars, String count) {
         int i = Integer.valueOf(count);
-        List<Car> subcarsList = new ArrayList<>();
+        List<Car> subcarsList;
         List<String> messages = new ArrayList<>();
         if (cars.size() >= i) {
             subcarsList = cars.subList(0, i);
