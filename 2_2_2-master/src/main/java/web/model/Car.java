@@ -21,25 +21,6 @@ public class Car {
         this.color = color;
     }
 
-    public static List<Car> getListCarFilled(){
-        Car car1 = new Car("Toyota", 2021, "Red");
-        carsList.add(car1);
-
-        Car car2 = new Car("Honda", 2020, "Blue");
-        carsList.add(car2);
-
-        Car car3 = new Car("BMW", 2019, "Black");
-        carsList.add(car3);
-
-        Car car4 = new Car("Ford", 2018, "White");
-        carsList.add(car4);
-
-        Car car5 = new Car("Mazda", 2017, "Silver");
-        carsList.add(car5);
-
-         return carsList;
-    }
-
     public String getModel() {
         return model;
     }
@@ -63,9 +44,6 @@ public class Car {
     public void setColor(String color) {
         this.color = color;
     }
-
-
-
 
 
     @Override
