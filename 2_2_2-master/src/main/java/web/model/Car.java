@@ -1,7 +1,6 @@
 package web.model;
 
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Objects;
 
 public class Car {
@@ -9,7 +8,6 @@ public class Car {
     private String model;
     private int series;
     private String color;
-    private static List<Car> carsList = new ArrayList<>();
 
 
     public Car() {
