@@ -1,6 +1,10 @@
 package web.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 
 @Entity
@@ -9,8 +13,18 @@ public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull(message = "Name may not be null")
+    @Size(min = 2, max = 20, message = "Name must be between 2 and 20 characters")
     private String model;
+
+    @NotNull(message = "Name may not be null")
+    @Digits(integer=2, message="Age should be a number with up to 3 digits", fraction=0)
+    @Positive(message="Price must be positive")
     private int series;
+
+    @NotNull(message = "Name may not be null")
+    @Size(min = 2, max = 15, message = "Name must be between 2 and 15 characters")
     private String color;
 
 

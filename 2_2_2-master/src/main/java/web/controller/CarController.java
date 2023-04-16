@@ -3,6 +3,7 @@ package web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import web.model.Car;
 import web.service.CarService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 
@@ -43,8 +45,18 @@ public class CarController {
         return "edit";
     }
 
+//    @PostMapping("/cars/update")
+//    public String updateCar(@ModelAttribute("car") Car car, @RequestParam("id") Long id) {
+//        carService.updateCar(id, car);
+//        return "redirect:/cars";
+//    }
+
     @PostMapping("/cars/update")
-    public String updateCar(@ModelAttribute("car") Car car, @RequestParam("id") Long id) {
+    public String updateCar(@ModelAttribute("car") @Valid Car car, BindingResult bindingResult, @RequestParam("id") Long id) {
+        if (bindingResult.hasErrors()) {
+            // Если есть ошибки валидации, возвращаем страницу с формой редактирования с сообщениями об ошибках
+            return "edit-car";
+        }
         carService.updateCar(id, car);
         return "redirect:/cars";
     }
