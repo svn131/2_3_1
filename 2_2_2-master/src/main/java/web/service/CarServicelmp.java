@@ -1,6 +1,7 @@
 package web.service;
 
 import org.springframework.stereotype.Service;
+import web.dao.CarDao;
 import web.model.Car;
 
 import javax.persistence.EntityManager;
@@ -11,33 +12,110 @@ import web.model.Car;
 @Service
 public class CarServicelmp implements CarService {
 
-    @PersistenceContext
-    private EntityManager entityManager;
+    private final CarDao carDao;
+
+    public CarServicelmp(CarDao carDao) {
+        this.carDao = carDao;
+    }
 
     @Override
     public List<Car> getListCarFilled() {
-        List<Car> cars = entityManager
-                .createQuery("SELECT c FROM Car c", Car.class)
-                .getResultList();
-        return cars;
+        return carDao.getListCarFilled();
     }
 
     @Override
     public List<String> getsubList(List<Car> cars, String count) {
-        int i = Integer.valueOf(count);
-        List<String> messages = new ArrayList<>();
-        List<Car> subCarsList;
-        if (cars.size() >= i) {
-            subCarsList = cars.subList(0, i);
-        } else {
-            subCarsList = cars;
-        }
-        for (Car car : subCarsList) {
-            messages.add(car.getModel() + " " + car.getSeries() + " " + car.getColor());
-        }
-        return messages;
+        return carDao.getsubList(cars, count);
     }
 }
+
+//
+//    @PersistenceContext
+//    private EntityManager entityManager;
+
+
+//
+//    @Override
+//    public List<Car> getListCarFilled() {
+//        List<Car> cars = entityManager
+//                .createQuery("SELECT c FROM Car c", Car.class)
+//                .getResultList();
+//        return cars;
+//    }
+
+//    @Override
+//    public List<String> getsubList(List<Car> cars, String count) {
+//        int i = Integer.valueOf(count);
+//        List<String> messages = new ArrayList<>();
+//        List<Car> subCarsList;
+//        if (cars.size() >= i) {
+//            subCarsList = cars.subList(0, i);
+//        } else {
+//            subCarsList = cars;
+//        }
+//        for (Car car : subCarsList) {
+//            messages.add(car.getModel() + " " + car.getSeries() + " " + car.getColor());
+//        }
+//        return messages;
+//    }
+
+
+
+
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
