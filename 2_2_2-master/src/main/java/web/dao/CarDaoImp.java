@@ -22,10 +22,7 @@ public class CarDaoImp implements  CarDao{
 //    }
 
 
-    @Override
-    public void add(Car car) {
 
-    }
 
     @Override
     public List<Car> getListCarFilled() {
@@ -55,8 +52,40 @@ public class CarDaoImp implements  CarDao{
         List<Car> cars = getListCarFilled();
     }
 
+    @Override
+    @Transactional
+    public void updateCar(Long id, Car car) {
+        Car existingCar = entityManager.find(Car.class, id);
+        if (existingCar != null) {
+            existingCar.setModel(car.getModel());
+            existingCar.setSeries(car.getSeries());
+            existingCar.setColor(car.getColor());
+            entityManager.merge(existingCar);
+        }
+    }
+
+    @Override
+    @Transactional
+    public void removeCar(Long id) {
+        Car car = entityManager.find(Car.class, id);
+        if (car != null) {
+            entityManager.remove(car);
+        }
+    }
+
+    @Override
+    @Transactional
+    public Car getCarById(Long id) {
+        return entityManager.find(Car.class, id);
+    }
 
 
 
+    @Override
+    public List<Car> getCars(int count) {
+        return entityManager.createQuery("SELECT c FROM Car c", Car.class)
+                .setMaxResults(count)
+                .getResultList();
+    }
 
 }

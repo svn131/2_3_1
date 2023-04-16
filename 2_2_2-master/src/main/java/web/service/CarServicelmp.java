@@ -33,6 +33,27 @@ public class CarServicelmp implements CarService {
         carDao.addCar(car);
     }
 
+    @Override
+    public Car getCarById(Long id) {
+       return carDao.getCarById(id);
+    }
+
+    @Override
+    public void updateCar(Long id, Car car) {
+    carDao.updateCar(id,car);
+    }
+
+    @Override
+   public void removeCar(Long id) {
+       carDao.removeCar(id);
+    }
+
+    @Override
+    public List<Car> getCars(int parseInt) {
+        return carDao.getCars(parseInt);
+    }
+
+
 }
 
 //    @Override
