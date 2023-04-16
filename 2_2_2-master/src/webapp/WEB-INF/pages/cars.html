@@ -27,6 +27,39 @@
         </tbody>
     </table>
 
+    <!-- код для кнопки добавления -->
+    <form method="POST" th:action="@{/cars/add}">
+        <input type="text" name="model" placeholder="Model...">
+        <input type="text" name="series" placeholder="Series...">
+        <input type="text" name="color" placeholder="Color...">
+        <button type="submit">Add Car</button>
+    </form>
+
+<!--    Удаление:-->
+
+
+    <form method="POST" th:action="@{/cars/remove}">
+        <select name="id">
+            <option th:each="car : ${cars}" th:value="${car.id}" th:text="${car.model}"></option>
+        </select>
+        <button type="submit">Remove Car</button>
+    </form>
+
+
+<!--    Изменение:-->
+
+
+    <form method="POST" th:action="@{/cars/edit}">
+        <select name="id">
+            <option th:each="car : ${cars}" th:value="${car.id}" th:text="${car.model}"></option>
+        </select>
+        <input type="text" name="newModel" placeholder="New Model...">
+        <input type="text" name="newSeries" placeholder="New Series...">
+        <input type="text" name="newColor" placeholder="New Color...">
+        <button type="submit">Edit Car</button>
+    </form>
+
+
 </div>
 </body>
 </html>

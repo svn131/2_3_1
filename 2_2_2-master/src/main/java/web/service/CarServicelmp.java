@@ -24,10 +24,22 @@ public class CarServicelmp implements CarService {
     }
 
     @Override
-    public List<String> getsubList(List<Car> cars, String count) {
-        return carDao.getsubList(cars, count);
+    public List<String> getsubList( String count) {
+        return carDao.getsubList(count);
     }
+
+    @Override
+    public void addCar(Car car) {
+        carDao.addCar(car);
+    }
+
 }
+
+//    @Override
+//    public void addCar(String model, int series, String color) {
+//        carDao.addCar(model, series, color);
+//    }
+//}
 
 //
 //    @PersistenceContext

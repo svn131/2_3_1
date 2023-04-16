@@ -9,5 +9,7 @@ public interface CarDao {
 
     List<Car> getListCarFilled();
 
-    List<String> getsubList(List<Car> cars, String count);
+    List<String> getsubList(String count);
+
+    void addCar(Car car);
 }

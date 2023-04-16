@@ -1,6 +1,7 @@
 package web.dao;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import web.model.Car;
 
 import javax.persistence.EntityManager;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
+@Transactional(readOnly = true)
 @Repository
 public class CarDaoImp implements  CarDao{
 
@@ -35,18 +36,27 @@ public class CarDaoImp implements  CarDao{
     }
 
     @Override
-    public List<String> getsubList(List<Car> cars, String count) {
+    public List<String> getsubList(String count) {
+        List<Car> cars = getListCarFilled();
         int i = Integer.valueOf(count);
         List<String> messages = new ArrayList<>();
         List<Car> subCarsList;
-        if (cars.size() >= i) {
-            subCarsList = cars.subList(0, i);
-        } else {
-            subCarsList = cars;
-        }
+        subCarsList = cars;
         for (Car car : subCarsList) {
             messages.add(car.getModel() + " " + car.getSeries() + " " + car.getColor());
         }
         return messages;
     }
+
+    @Override
+    @Transactional
+    public void addCar(Car car) {
+        entityManager.persist(car);
+        List<Car> cars = getListCarFilled();
+    }
+
+
+
+
+
 }

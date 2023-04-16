@@ -2,9 +2,12 @@ package web.config;
 
 
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.PlatformTransactionManager;
 import web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -17,10 +20,13 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+
+
 
 
 @Configuration
@@ -32,7 +38,7 @@ public class AppConfig {
 
     private Environment env;
 
-
+    @Autowired
     public AppConfig(Environment env) {
         this.env = env;
     }
@@ -44,7 +50,12 @@ public class AppConfig {
 
 
 
-
+    @Bean
+    public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
+        JpaTransactionManager jpaTransactionManager = new JpaTransactionManager();
+        jpaTransactionManager.setEntityManagerFactory(entityManagerFactory);
+        return jpaTransactionManager;
+    }
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
@@ -85,6 +96,139 @@ public class AppConfig {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+//
+//@Configuration
+//@PropertySource("classpath:db.properties")
+//@ComponentScan("web")
+//@EnableTransactionManagement
+//public class AppConfig {
+//
+//    @Autowired
+//    private Environment environment;
+//
+//    @Autowired
+//    private ObjectProvider<EntityManagerFactory> entityManagerFactoryProvider;
+//
+//
+////        public AppConfig(Environment env) {
+////        this.environment = environment;
+////    }
+//
+//    @Bean
+//    public DataSource getDataSource() {
+//        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+//        dataSource.setDriverClassName(environment.getProperty("db.driver"));
+//        dataSource.setUrl(environment.getProperty("db.url"));
+//        dataSource.setUsername(environment.getProperty("db.username"));
+//        dataSource.setPassword(environment.getProperty("db.password"));
+//
+//        return dataSource;
+//    }
+//
+//    @Bean
+//    public JdbcTemplate jdbcTemplate() {
+//        JdbcTemplate jdbcTemplate = new JdbcTemplate();
+//        jdbcTemplate.setDataSource(getDataSource());
+//        return jdbcTemplate;
+//    }
+//
+//    @Bean
+//    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, Environment environment) {
+//        HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+//        vendorAdapter.setGenerateDdl(true);
+//
+//        Properties properties = new Properties();
+//        properties.put("hibernate.dialect", environment.getProperty("hibernate.dialect"));
+//        properties.put("hibernate.show_sql", environment.getProperty("hibernate.show_sql"));
+//        properties.put("hibernate.format_sql", environment.getProperty("hibernate.format_sql"));
+//        properties.put("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.update"));
+//
+//        LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
+//        entityManagerFactoryBean.setDataSource(dataSource);
+//        entityManagerFactoryBean.setJpaVendorAdapter(vendorAdapter);
+//        entityManagerFactoryBean.setJpaProperties(properties);
+//        entityManagerFactoryBean.setPackagesToScan("web");
+//        entityManagerFactoryBean.setPersistenceUnitName("MyPU");
+//
+//        return entityManagerFactoryBean;
+//    }
+//
+//    @Bean
+//    public PlatformTransactionManager transactionManager() {
+//        return new JpaTransactionManager(entityManagerFactoryProvider.getIfAvailable());
+//    }
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
