@@ -1,10 +1,14 @@
 package web.model;
 
-
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table(name = "car")
 public class Car {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String model;
     private int series;
     private String color;
@@ -42,6 +46,7 @@ public class Car {
     public void setColor(String color) {
         this.color = color;
     }
+
 
 
     @Override

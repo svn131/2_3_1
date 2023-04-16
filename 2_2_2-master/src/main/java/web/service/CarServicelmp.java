@@ -1,50 +1,104 @@
 package web.service;
 
-
 import org.springframework.stereotype.Service;
 import web.model.Car;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.ArrayList;
 import java.util.List;
-
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-
-
+import web.model.Car;
 @Service
 public class CarServicelmp implements CarService {
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
-    List<Car> carsList = new ArrayList<>();
+
+    @PersistenceContext
+    private EntityManager entityManager;
+
     @Override
     public List<Car> getListCarFilled() {
-
-        carsList = jdbcTemplate.query("SELECT * FROM car", (rs, rowNum) ->
-                new Car(rs.getString("model"), rs.getInt("series"), rs.getString("color")));
-
-        return carsList;
+        List<Car> cars = entityManager
+                .createQuery("SELECT c FROM Car c", Car.class)
+                .getResultList();
+        return cars;
     }
-
-
 
     @Override
     public List<String> getsubList(List<Car> cars, String count) {
         int i = Integer.valueOf(count);
-        List<Car> subcarsList;
         List<String> messages = new ArrayList<>();
+        List<Car> subCarsList;
         if (cars.size() >= i) {
-            subcarsList = cars.subList(0, i);
+            subCarsList = cars.subList(0, i);
         } else {
-            subcarsList = cars;
+            subCarsList = cars;
         }
-        for (Car car : subcarsList) {
+        for (Car car : subCarsList) {
             messages.add(car.getModel() + " " + car.getSeries() + " " + car.getColor());
         }
         return messages;
     }
-
 }
+
+
+
+
+
+//import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+//import org.springframework.stereotype.Service;
+//import web.model.Car;
+//
+//import java.util.ArrayList;
+//import java.util.List;
+//
+//
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.jdbc.core.JdbcTemplate;
+//import javax.persistence.EntityManager;
+//
+//@Service
+//public class CarServicelmp implements CarService {
+//    @Autowired
+//    private JdbcTemplate jdbcTemplate;
+//    List<Car> carsList = new ArrayList<>();
+//    @Autowired
+//    private LocalContainerEntityManagerFactoryBean entityManager;
+//
+//    @Override
+//    public List<Car> getListCarFilled() {
+//        List<Car> carsList = entityManager.createQuery("SELECT c FROM Car c", Car.class).getResultList();
+//        return carsList;
+//    }
+//
+//
+//
+////    @Override
+////    public List<Car> getListCarFilled() {
+////
+////        carsList = jdbcTemplate.query("SELECT * FROM car", (rs, rowNum) ->
+////                new Car(rs.getString("model"), rs.getInt("series"), rs.getString("color")));
+////
+////        return carsList;
+////    }
+//
+//
+//
+//    @Override
+//    public List<String> getsubList(List<Car> cars, String count) {
+//        int i = Integer.valueOf(count);
+//        List<Car> subcarsList;
+//        List<String> messages = new ArrayList<>();
+//        if (cars.size() >= i) {
+//            subcarsList = cars.subList(0, i);
+//        } else {
+//            subcarsList = cars;
+//        }
+//        for (Car car : subcarsList) {
+//            messages.add(car.getModel() + " " + car.getSeries() + " " + car.getColor());
+//        }
+//        return messages;
+//    }
+//
+//}
 //    @Override
 //    public List<Car> getListCarFilled() {
 //        List<Car> carsList = new ArrayList<>();
