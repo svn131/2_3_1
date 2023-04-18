@@ -1,28 +1,27 @@
 package web.service;
 
-import org.springframework.ui.ModelMap;
-import web.model.Car;
+import web.model.User;
 
 import java.util.List;
 
 public interface CarService {
-    List<Car> getListCarFilled();
+    List<User> getListCarFilled();
 
     List<String> getsubList(String count);
 
-    void addCar(Car car);
+    void addCar(User user);
 
 
 
-    public Car getCarById(Long id) ;
+    public User getCarById(Long id) ;
 
 
 
 
-   void updateCar(Long id, Car car) ;
+   void updateCar(Long id, User user) ;
 
 
     void removeCar(Long id) ;
 
-    List<Car> getCars(int parseInt);
+    List<User> getCars(int parseInt);
 }

@@ -2,13 +2,10 @@ package web.service;
 
 import org.springframework.stereotype.Service;
 import web.dao.CarDao;
-import web.model.Car;
+import web.model.User;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import java.util.ArrayList;
 import java.util.List;
-import web.model.Car;
+
 @Service
 public class CarServicelmp implements CarService {
 
@@ -19,7 +16,7 @@ public class CarServicelmp implements CarService {
     }
 
     @Override
-    public List<Car> getListCarFilled() {
+    public List<User> getListCarFilled() {
         return carDao.getListCarFilled();
     }
 
@@ -29,18 +26,18 @@ public class CarServicelmp implements CarService {
     }
 
     @Override
-    public void addCar(Car car) {
-        carDao.addCar(car);
+    public void addCar(User user) {
+        carDao.addCar(user);
     }
 
     @Override
-    public Car getCarById(Long id) {
+    public User getCarById(Long id) {
        return carDao.getCarById(id);
     }
 
     @Override
-    public void updateCar(Long id, Car car) {
-    carDao.updateCar(id,car);
+    public void updateCar(Long id, User user) {
+    carDao.updateCar(id, user);
     }
 
     @Override
@@ -49,7 +46,7 @@ public class CarServicelmp implements CarService {
     }
 
     @Override
-    public List<Car> getCars(int parseInt) {
+    public List<User> getCars(int parseInt) {
         return carDao.getCars(parseInt);
     }
 

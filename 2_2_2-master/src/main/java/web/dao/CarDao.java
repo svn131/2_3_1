@@ -1,21 +1,21 @@
 package web.dao;
 
-import web.model.Car;
+import web.model.User;
 
 import java.util.List;
 
 public interface CarDao {
 
-    List<Car> getListCarFilled();
+    List<User> getListCarFilled();
 
     List<String> getsubList(String count);
 
-    void addCar(Car car);
+    void addCar(User user);
 
-    void updateCar(Long id, Car car);
+    void updateCar(Long id, User user);
     void removeCar(Long id);
-    Car getCarById(Long id);
+    User getCarById(Long id);
 
-    List<Car> getCars(int count); // Получить список первых count машин
+    List<User> getCars(int count); // Получить список первых count машин
 
 }

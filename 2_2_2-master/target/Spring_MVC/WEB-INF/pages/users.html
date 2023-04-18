@@ -25,19 +25,19 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="car : ${cars}" th:id="'carRow_' + ${car.id}">
-            <td th:text="${car.model}"/>
-            <td th:text="${car.series}"/>
-            <td th:text="${car.color}"/>
+        <tr th:each="user : ${users}" th:id="'carRow_' + ${user.id}">
+            <td th:text="${user.model}"/>
+            <td th:text="${user.series}"/>
+            <td th:text="${user.color}"/>
             <td>
-                <form method="POST" th:action="@{/cars/edit}">
-                    <input type="hidden" name="id" th:value="${car.id}">
+                <form method="POST" th:action="@{/users/edit}">
+                    <input type="hidden" name="id" th:value="${user.id}">
                     <button type="submit">Edit</button>
                 </form>
             </td>
             <td>
-                <form method="POST" th:action="@{/cars/remove}">
-                    <input type="hidden" name="id" th:value="${car.id}">
+                <form method="POST" th:action="@{/users/remove}">
+                    <input type="hidden" name="id" th:value="${user.id}">
                     <button type="submit">Delete</button>
                 </form>
             </td>
@@ -46,7 +46,7 @@
     </table>
 
     <!-- код для кнопки добавления -->
-    <form method="POST" th:action="@{/cars/add}">
+    <form method="POST" th:action="@{/users/add}">
         <input type="text" name="model" placeholder="Model...">
         <input type="text" name="series" placeholder="Series...">
         <input type="text" name="color" placeholder="Color...">

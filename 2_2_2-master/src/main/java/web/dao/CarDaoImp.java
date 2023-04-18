@@ -2,7 +2,7 @@ package web.dao;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import web.model.Car;
+import web.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,65 +25,65 @@ public class CarDaoImp implements  CarDao{
 
 
     @Override
-    public List<Car> getListCarFilled() {
-        List<Car> cars = entityManager
-                .createQuery("SELECT c FROM Car c", Car.class)
+    public List<User> getListCarFilled() {
+        List<User> users = entityManager
+                .createQuery("SELECT c FROM User c", User.class)
                 .getResultList();
-        return cars;
+        return users;
     }
 
     @Override
     public List<String> getsubList(String count) {
-        List<Car> cars = getListCarFilled();
+        List<User> users = getListCarFilled();
         int i = Integer.valueOf(count);
         List<String> messages = new ArrayList<>();
-        List<Car> subCarsList;
-        subCarsList = cars;
-        for (Car car : subCarsList) {
-            messages.add(car.getModel() + " " + car.getSeries() + " " + car.getColor());
+        List<User> subCarsList;
+        subCarsList = users;
+        for (User user : subCarsList) {
+            messages.add(user.getModel() + " " + user.getSeries() + " " + user.getColor());
         }
         return messages;
     }
 
     @Override
     @Transactional
-    public void addCar(Car car) {
-        entityManager.persist(car);
-        List<Car> cars = getListCarFilled();
+    public void addCar(User user) {
+        entityManager.persist(user);
+        List<User> users = getListCarFilled();
     }
 
     @Override
     @Transactional
-    public void updateCar(Long id, Car car) {
-        Car existingCar = entityManager.find(Car.class, id);
-        if (existingCar != null) {
-            existingCar.setModel(car.getModel());
-            existingCar.setSeries(car.getSeries());
-            existingCar.setColor(car.getColor());
-            entityManager.merge(existingCar);
+    public void updateCar(Long id, User user) {
+        User existingUser = entityManager.find(User.class, id);
+        if (existingUser != null) {
+            existingUser.setModel(user.getModel());
+            existingUser.setSeries(user.getSeries());
+            existingUser.setColor(user.getColor());
+            entityManager.merge(existingUser);
         }
     }
 
     @Override
     @Transactional
     public void removeCar(Long id) {
-        Car car = entityManager.find(Car.class, id);
-        if (car != null) {
-            entityManager.remove(car);
+        User user = entityManager.find(User.class, id);
+        if (user != null) {
+            entityManager.remove(user);
         }
     }
 
     @Override
     @Transactional
-    public Car getCarById(Long id) {
-        return entityManager.find(Car.class, id);
+    public User getCarById(Long id) {
+        return entityManager.find(User.class, id);
     }
 
 
 
     @Override
-    public List<Car> getCars(int count) {
-        return entityManager.createQuery("SELECT c FROM Car c", Car.class)
+    public List<User> getCars(int count) {
+        return entityManager.createQuery("SELECT c FROM User c", User.class)
                 .setMaxResults(count)
                 .getResultList();
     }

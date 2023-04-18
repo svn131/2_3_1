@@ -8,28 +8,28 @@
 <!--</head>-->
 <!--<body>-->
 <!--<h1>Edit Car</h1>-->
-<!--<form method="POST" th:action="@{/cars/update}" th:object="${car}">-->
+<!--<form method="POST" th:action="@{/users/update}" th:object="${user}">-->
 <!--  <input type="hidden" th:field="*{id}">-->
 <!--  <div class="form-group">-->
 <!--    <label for="model">Model:</label>-->
 <!--    <input type="text" class="form-control"-->
 <!--           th:field="*{model}"-->
-<!--           th:value="${car.getModel()}"-->
-<!--           th:attr="id=${'model-' + car.id}">-->
+<!--           th:value="${user.getModel()}"-->
+<!--           th:attr="id=${'model-' + user.id}">-->
 <!--  </div>-->
 <!--  <div class="form-group">-->
 <!--    <label for="series">Series:</label>-->
 <!--    <input type="text" class="form-control"-->
 <!--           th:field="*{series}"-->
-<!--           th:value="${car.getSeries()}"-->
-<!--           th:attr="id=${'series-' + car.id}">-->
+<!--           th:value="${user.getSeries()}"-->
+<!--           th:attr="id=${'series-' + user.id}">-->
 <!--  </div>-->
 <!--  <div class="form-group">-->
 <!--    <label for="color">Color:</label>-->
 <!--    <input type="text" class="form-control"-->
 <!--           th:field="*{color}"-->
-<!--           th:value="${car.getColor()}"-->
-<!--           th:attr="id=${'color-' + car.id}">-->
+<!--           th:value="${user.getColor()}"-->
+<!--           th:attr="id=${'color-' + user.id}">-->
 <!--  </div>-->
 <!--  <button type="submit" class="btn btn-primary">Save changes</button>-->
 <!--</form>-->
@@ -71,7 +71,7 @@
 <!--</style>-->
 <!--<body>-->
 <!--<h1>Edit Car</h1>-->
-<!--<form method="POST" th:action="@{/cars/update}" th:object="${car}">-->
+<!--<form method="POST" th:action="@{/users/update}" th:object="${user}">-->
 <!--  <input type="hidden" th:field="*{id}">-->
 <!--  <div class="form-group">-->
 <!--    <label for="model">Model:</label>-->
@@ -85,7 +85,7 @@
 <!--    <label for="color">Color:</label>-->
 <!--    <input type="text" class="form-control" id="color" th:field="*{color}">-->
 <!--  </div>-->
-<!--  <input type="hidden" name="id" th:value="${car.id}">-->
+<!--  <input type="hidden" name="id" th:value="${user.id}">-->
 <!--  <button type="submit" class="btn btn-primary">Save changes</button>-->
 <!--</form>-->
 <!--</body>-->
@@ -131,24 +131,24 @@
 </head>
 <body>
 <div>
-  <form method="POST" th:action="@{/cars/update}" th:object="${car}">
-    <input type="hidden" name="id" th:value="${car.id}"/>
+  <form method="POST" th:action="@{/users/update}" th:object="${user}">
+    <input type="hidden" name="id" th:value="${user.id}"/>
     <div class="row mb-3">
       <label for="inputModel" class="col-sm-2 col-form-label">Model:</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="inputModel" name="model" th:value="${car.model}">
+        <input type="text" class="form-control" id="inputModel" name="model" th:value="${user.model}">
       </div>
     </div>
     <div class="row mb-3">
       <label for="inputSeries" class="col-sm-2 col-form-label">Series:</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="inputSeries" name="series" th:value="${car.series}">
+        <input type="text" class="form-control" id="inputSeries" name="series" th:value="${user.series}">
       </div>
     </div>
     <div class="row mb-3">
       <label for="inputColor" class="col-sm-2 col-form-label">Color:</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="inputColor" name="color" th:value="${car.color}">
+        <input type="text" class="form-control" id="inputColor" name="color" th:value="${user.color}">
       </div>
     </div>
     <button type="submit" class="btn btn-primary">Save</button>
