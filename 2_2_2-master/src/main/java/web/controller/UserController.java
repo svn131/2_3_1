@@ -42,7 +42,7 @@ public class UserController {
     public String editUser(@RequestParam("id") Long id, ModelMap modelMap) {
         User user = userService.getUserById(id);
         modelMap.addAttribute("user", user);
-        return "edit-user";
+        return "edit";
     }
 
 
