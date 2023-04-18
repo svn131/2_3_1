@@ -9,24 +9,24 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import web.model.User;
-import web.service.CarService;
+import web.service.UserService;
 
 import javax.validation.Valid;
 import java.util.List;
 
 
 @Controller
-public class CarController {
+public class UserController {
 
-    private final CarService carService;
+    private final UserService userService;
 
-    public CarController(CarService carService) {
-        this.carService = carService;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping(value = "/users")
     public String printCars(ModelMap model) {
-        List<User> users = carService.getCars(Integer.MAX_VALUE);
+        List<User> users = userService.getUsers(Integer.MAX_VALUE);
         model.addAttribute("users", users); // добавляем в модель список объектов Car
         return "users";
     }
@@ -34,13 +34,13 @@ public class CarController {
     @PostMapping(value = "/users/add")
     public String addCar(@RequestParam("model") String model, @RequestParam("series") int series,
                          @RequestParam("color") String color) {
-        carService.addCar(new User(model, series, color));
+        userService.addUser(new User(model, series, color));
         return "redirect:/users";
     }
 
     @PostMapping("/users/edit")
     public String editCar(@RequestParam("id") Long id, ModelMap modelMap) {
-        User user = carService.getCarById(id);
+        User user = userService.getUserById(id);
         modelMap.addAttribute("user", user);
         return "edit";
     }
@@ -52,13 +52,13 @@ public class CarController {
             // Если есть ошибки валидации, возвращаем страницу с формой редактирования с сообщениями об ошибках
             return "edit-car";
         }
-        carService.updateCar(id, user);
+        userService.updateUser(id, user);
         return "redirect:/users";
     }
 
     @PostMapping("/users/remove")
     public String removeCar(@RequestParam("id") Long id) {
-        carService.removeCar(id);
+        userService.removeUser(id);
         System.out.println(id);
         return "redirect:/users";
     }

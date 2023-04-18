@@ -1,53 +1,53 @@
 package web.service;
 
 import org.springframework.stereotype.Service;
-import web.dao.CarDao;
+import web.dao.UserDao;
 import web.model.User;
 
 import java.util.List;
 
 @Service
-public class CarServicelmp implements CarService {
+public class UserServicelmp implements UserService {
 
-    private final CarDao carDao;
+    private final UserDao userDao;
 
-    public CarServicelmp(CarDao carDao) {
-        this.carDao = carDao;
+    public UserServicelmp(UserDao userDao) {
+        this.userDao = userDao;
     }
 
     @Override
     public List<User> getListCarFilled() {
-        return carDao.getListCarFilled();
+        return userDao.getListUserFilled();
     }
 
     @Override
     public List<String> getsubList( String count) {
-        return carDao.getsubList(count);
+        return userDao.getsubList(count);
     }
 
     @Override
-    public void addCar(User user) {
-        carDao.addCar(user);
+    public void addUser(User user) {
+        userDao.addUser(user);
     }
 
     @Override
-    public User getCarById(Long id) {
-       return carDao.getCarById(id);
+    public User getUserById(Long id) {
+       return userDao.getUserById(id);
     }
 
     @Override
-    public void updateCar(Long id, User user) {
-    carDao.updateCar(id, user);
+    public void updateUser(Long id, User user) {
+    userDao.updateUser(id, user);
     }
 
     @Override
-   public void removeCar(Long id) {
-       carDao.removeCar(id);
+   public void removeUser(Long id) {
+       userDao.removeUser(id);
     }
 
     @Override
-    public List<User> getCars(int parseInt) {
-        return carDao.getCars(parseInt);
+    public List<User> getUsers(int parseInt) {
+        return userDao.getUsers(parseInt);
     }
 
 

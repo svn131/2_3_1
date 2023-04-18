@@ -12,7 +12,7 @@ import java.util.List;
 
 @Transactional(readOnly = true)
 @Repository
-public class CarDaoImp implements  CarDao{
+public class UserDaoImp implements UserDao {
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -25,7 +25,7 @@ public class CarDaoImp implements  CarDao{
 
 
     @Override
-    public List<User> getListCarFilled() {
+    public List<User> getListUserFilled() {
         List<User> users = entityManager
                 .createQuery("SELECT c FROM User c", User.class)
                 .getResultList();
@@ -34,7 +34,7 @@ public class CarDaoImp implements  CarDao{
 
     @Override
     public List<String> getsubList(String count) {
-        List<User> users = getListCarFilled();
+        List<User> users = getListUserFilled();
         int i = Integer.valueOf(count);
         List<String> messages = new ArrayList<>();
         List<User> subCarsList;
@@ -47,14 +47,14 @@ public class CarDaoImp implements  CarDao{
 
     @Override
     @Transactional
-    public void addCar(User user) {
+    public void addUser(User user) {
         entityManager.persist(user);
-        List<User> users = getListCarFilled();
+        List<User> users = getListUserFilled();
     }
 
     @Override
     @Transactional
-    public void updateCar(Long id, User user) {
+    public void updateUser(Long id, User user) {
         User existingUser = entityManager.find(User.class, id);
         if (existingUser != null) {
             existingUser.setModel(user.getModel());
@@ -66,7 +66,7 @@ public class CarDaoImp implements  CarDao{
 
     @Override
     @Transactional
-    public void removeCar(Long id) {
+    public void removeUser(Long id) {
         User user = entityManager.find(User.class, id);
         if (user != null) {
             entityManager.remove(user);
@@ -75,14 +75,14 @@ public class CarDaoImp implements  CarDao{
 
     @Override
     @Transactional
-    public User getCarById(Long id) {
+    public User getUserById(Long id) {
         return entityManager.find(User.class, id);
     }
 
 
 
     @Override
-    public List<User> getCars(int count) {
+    public List<User> getUsers(int count) {
         return entityManager.createQuery("SELECT c FROM User c", User.class)
                 .setMaxResults(count)
                 .getResultList();
