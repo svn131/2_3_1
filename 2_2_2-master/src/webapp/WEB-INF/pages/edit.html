@@ -1,158 +1,64 @@
-<!--<!DOCTYPE html>-->
-<!--<html xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--  <meta charset="UTF-8">-->
-<!--  <title>Edit Car</title>-->
-<!--  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"-->
-<!--        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">-->
-<!--</head>-->
-<!--<body>-->
-<!--<h1>Edit Car</h1>-->
-<!--<form method="POST" th:action="@{/users/update}" th:object="${user}">-->
-<!--  <input type="hidden" th:field="*{id}">-->
-<!--  <div class="form-group">-->
-<!--    <label for="model">Model:</label>-->
-<!--    <input type="text" class="form-control"-->
-<!--           th:field="*{model}"-->
-<!--           th:value="${user.getModel()}"-->
-<!--           th:attr="id=${'model-' + user.id}">-->
-<!--  </div>-->
-<!--  <div class="form-group">-->
-<!--    <label for="series">Series:</label>-->
-<!--    <input type="text" class="form-control"-->
-<!--           th:field="*{series}"-->
-<!--           th:value="${user.getSeries()}"-->
-<!--           th:attr="id=${'series-' + user.id}">-->
-<!--  </div>-->
-<!--  <div class="form-group">-->
-<!--    <label for="color">Color:</label>-->
-<!--    <input type="text" class="form-control"-->
-<!--           th:field="*{color}"-->
-<!--           th:value="${user.getColor()}"-->
-<!--           th:attr="id=${'color-' + user.id}">-->
-<!--  </div>-->
-<!--  <button type="submit" class="btn btn-primary">Save changes</button>-->
-<!--</form>-->
-<!--</body>-->
-<!--</html>-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--<!DOCTYPE html>-->
-<!--<html xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--  <meta charset="UTF-8">-->
-<!--  <title>Edit Car</title>-->
-<!--  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"-->
-<!--        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">-->
-<!--</head>-->
-<!--<style>-->
-<!--  body {-->
-<!--    background-color: #343a40;-->
-<!--  }-->
-<!--</style>-->
-<!--<body>-->
-<!--<h1>Edit Car</h1>-->
-<!--<form method="POST" th:action="@{/users/update}" th:object="${user}">-->
-<!--  <input type="hidden" th:field="*{id}">-->
-<!--  <div class="form-group">-->
-<!--    <label for="model">Model:</label>-->
-<!--    <input type="text" class="form-control" id="model" th:field="*{model}">-->
-<!--  </div>-->
-<!--  <div class="form-group">-->
-<!--    <label for="series">Series:</label>-->
-<!--    <input type="text" class="form-control" id="series" th:field="*{series}">-->
-<!--  </div>-->
-<!--  <div class="form-group">-->
-<!--    <label for="color">Color:</label>-->
-<!--    <input type="text" class="form-control" id="color" th:field="*{color}">-->
-<!--  </div>-->
-<!--  <input type="hidden" name="id" th:value="${user.id}">-->
-<!--  <button type="submit" class="btn btn-primary">Save changes</button>-->
-<!--</form>-->
-<!--</body>-->
-<!--</html>-->
-
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Edit</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
-        crossorigin="anonymous">
-  <style>
-    .table-dark th {
-      background-color: #343a40;
-    }
+    <meta charset="UTF-8">
+    <title>Edit</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+          crossorigin="anonymous">
+    <style>
+        .table-dark th {
+            background-color: #343a40;
+        }
 
-    body {
-      background-color: #343a40;
-      color: #fff;
-    }
+        body {
+            background-color: #343a40;
+            color: #fff;
+        }
 
-    form input {
-      background-color: #5a5e61;
-      color: #fff;
-    }
+        form input {
+            background-color: #5a5e61;
+            color: #fff;
+        }
 
-    form button {
-      background-color: #6c757d;
-      color: #fff;
-    }
+        form button {
+            background-color: #6c757d;
+            color: #fff;
+        }
 
-    form button:hover {
-      background-color: #343a40;
-    }
+        form button:hover {
+            background-color: #343a40;
+        }
 
-  </style>
+    </style>
 </head>
 <body>
 <div>
-  <form method="POST" th:action="@{/users/update}" th:object="${user}" class="car-form">
-    <input type="hidden" name="id" th:value="${user.id}"/>
-    <div class="row mb-3">
-      <label for="inputModel" class="col-sm-2 col-form-label">Model:</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="inputModel" name="model" th:value="${user.name}">
-      </div>
-    </div>
-    <div class="row mb-3">
-      <label for="inputSeries" class="col-sm-2 col-form-label">Series:</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="inputSeries" name="series" th:value="${user.age}">
-      </div>
-    </div>
-    <div class="row mb-3">
-      <label for="inputColor" class="col-sm-2 col-form-label">Color:</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="inputColor" name="color" th:value="${user.city}">
-      </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Save</button>
-  </form>
+    <form method="POST" th:action="@{/users/update}" th:object="${user}" class="car-form">
+        <input type="hidden" name="id" th:value="${user.id}"/>
+        <div class="row mb-3">
+            <label for="inputModel" class="col-sm-2 col-form-label">Model:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputModel" name="model" th:value="${user.name}">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="inputSeries" class="col-sm-2 col-form-label">Series:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputSeries" name="series" th:value="${user.age}">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="inputColor" class="col-sm-2 col-form-label">Color:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputColor" name="color" th:value="${user.city}">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
 </div>
 </body>
 </html>

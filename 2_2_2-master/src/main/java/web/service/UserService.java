@@ -12,16 +12,13 @@ public interface UserService {
     void addUser(User user);
 
 
-
-    public User getUserById(Long id) ;
-
+    public User getUserById(Long id);
 
 
+    void updateUser(Long id, User user);
 
-   void updateUser(Long id, User user) ;
 
-
-    void removeUser(Long id) ;
+    void removeUser(Long id);
 
     List<User> getUsers(int parseInt);
 }

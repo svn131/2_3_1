@@ -19,8 +19,8 @@ public class User {
     private String name;
 
     @NotNull(message = "Name may not be null")
-    @Digits(integer=2, message="Age should be a number with up to 3 digits", fraction=0)
-    @Positive(message="Price must be positive")
+    @Digits(integer = 2, message = "Age should be a number with up to 3 digits", fraction = 0)
+    @Positive(message = "Price must be positive")
     private int age;
 
     @NotNull(message = "Name may not be null")

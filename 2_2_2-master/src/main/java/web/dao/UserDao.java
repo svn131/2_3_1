@@ -13,9 +13,11 @@ public interface UserDao {
     void addUser(User user);
 
     void updateUser(Long id, User user);
+
     void removeUser(Long id);
+
     User getUserById(Long id);
 
-    List<User> getUsers(int count); // Получить список первых count машин
+    List<User> getUsers(int count);
 
 }

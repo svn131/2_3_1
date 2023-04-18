@@ -17,12 +17,6 @@ public class UserDaoImp implements UserDao {
     @PersistenceContext
     private EntityManager entityManager;
 
-//    public CarDaoImp(EntityManager entityManager) {
-//        this.entityManager=entityManager;
-//    }
-
-
-
 
     @Override
     public List<User> getListUserFilled() {
@@ -78,7 +72,6 @@ public class UserDaoImp implements UserDao {
     public User getUserById(Long id) {
         return entityManager.find(User.class, id);
     }
-
 
 
     @Override

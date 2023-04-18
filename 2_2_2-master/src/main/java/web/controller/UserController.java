@@ -25,21 +25,21 @@ public class UserController {
     }
 
     @GetMapping(value = "/users")
-    public String printCars(ModelMap model) {
+    public String printUsers(ModelMap model) {
         List<User> users = userService.getUsers(Integer.MAX_VALUE);
         model.addAttribute("users", users); // добавляем в модель список объектов Car
         return "users";
     }
 
     @PostMapping(value = "/users/add")
-    public String addCar(@RequestParam("name") String model, @RequestParam("age") int series,
-                         @RequestParam("city") String color) {
+    public String addUser(@RequestParam("name") String model, @RequestParam("age") int series,
+                          @RequestParam("city") String color) {
         userService.addUser(new User(model, series, color));
         return "redirect:/users";
     }
 
     @PostMapping("/users/edit")
-    public String editCar(@RequestParam("id") Long id, ModelMap modelMap) {
+    public String editUser(@RequestParam("id") Long id, ModelMap modelMap) {
         User user = userService.getUserById(id);
         modelMap.addAttribute("user", user);
         return "edit-user";
@@ -47,7 +47,7 @@ public class UserController {
 
 
     @PostMapping("/users/update")
-    public String updateCar(@ModelAttribute("user") @Valid User user, BindingResult bindingResult, @RequestParam("id") Long id) {
+    public String updateUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult, @RequestParam("id") Long id) {
         if (bindingResult.hasErrors()) {
             // Если есть ошибки валидации, возвращаем страницу с формой редактирования с сообщениями об ошибках
             return "edit-user";
@@ -57,7 +57,7 @@ public class UserController {
     }
 
     @PostMapping("/users/remove")
-    public String removeCar(@RequestParam("id") Long id) {
+    public String removeUser(@RequestParam("id") Long id) {
         userService.removeUser(id);
         System.out.println(id);
         return "redirect:/users";
