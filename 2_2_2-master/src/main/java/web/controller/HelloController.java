@@ -10,7 +10,7 @@ public class HelloController {
 
     @GetMapping("/")
     public String printWelcome() {
-        return "redirect:/users" ;
+        return "redirect:/users";
     }
 
 }
