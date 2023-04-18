@@ -49,7 +49,6 @@ public class UserController {
     @PostMapping("/users/update")
     public String updateUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult, @RequestParam("id") Long id) {
         if (bindingResult.hasErrors()) {
-            // Если есть ошибки валидации, возвращаем страницу с формой редактирования с сообщениями об ошибках
             return "edit-user";
         }
         userService.updateUser(id, user);
