@@ -45,11 +45,6 @@ public class CarController {
         return "edit";
     }
 
-//    @PostMapping("/cars/update")
-//    public String updateCar(@ModelAttribute("car") Car car, @RequestParam("id") Long id) {
-//        carService.updateCar(id, car);
-//        return "redirect:/cars";
-//    }
 
     @PostMapping("/cars/update")
     public String updateCar(@ModelAttribute("car") @Valid Car car, BindingResult bindingResult, @RequestParam("id") Long id) {
