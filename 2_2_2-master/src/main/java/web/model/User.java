@@ -16,49 +16,49 @@ public class User {
 
     @NotNull(message = "Name may not be null")
     @Size(min = 2, max = 20, message = "Name must be between 2 and 20 characters")
-    private String model;
+    private String name;
 
     @NotNull(message = "Name may not be null")
     @Digits(integer=2, message="Age should be a number with up to 3 digits", fraction=0)
     @Positive(message="Price must be positive")
-    private int series;
+    private int age;
 
     @NotNull(message = "Name may not be null")
     @Size(min = 2, max = 15, message = "Name must be between 2 and 15 characters")
-    private String color;
+    private String city;
 
 
     public User() {
     }
 
-    public User(String model, int series, String color) {
-        this.model = model;
-        this.series = series;
-        this.color = color;
+    public User(String name, int age, String city) {
+        this.name = name;
+        this.age = age;
+        this.city = city;
     }
 
-    public String getModel() {
-        return model;
+    public String getName() {
+        return name;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public void setName(String model) {
+        this.name = model;
     }
 
-    public int getSeries() {
-        return series;
+    public int getAge() {
+        return age;
     }
 
-    public void setSeries(int series) {
-        this.series = series;
+    public void setAge(int series) {
+        this.age = series;
     }
 
-    public String getColor() {
-        return color;
+    public String getCity() {
+        return city;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setCity(String color) {
+        this.city = color;
     }
 
 
@@ -74,12 +74,12 @@ public class User {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof User user)) return false;
-        return getSeries() == user.getSeries() && Objects.equals(getModel(), user.getModel()) && Objects.equals(getColor(), user.getColor());
+        return getAge() == user.getAge() && Objects.equals(getName(), user.getName()) && Objects.equals(getCity(), user.getCity());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getModel(), getSeries(), getColor());
+        return Objects.hash(getName(), getAge(), getCity());
     }
 }
 

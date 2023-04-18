@@ -32,8 +32,8 @@ public class UserController {
     }
 
     @PostMapping(value = "/users/add")
-    public String addCar(@RequestParam("model") String model, @RequestParam("series") int series,
-                         @RequestParam("color") String color) {
+    public String addCar(@RequestParam("name") String model, @RequestParam("age") int series,
+                         @RequestParam("city") String color) {
         userService.addUser(new User(model, series, color));
         return "redirect:/users";
     }
@@ -42,7 +42,7 @@ public class UserController {
     public String editCar(@RequestParam("id") Long id, ModelMap modelMap) {
         User user = userService.getUserById(id);
         modelMap.addAttribute("user", user);
-        return "edit";
+        return "edit-user";
     }
 
 
@@ -50,7 +50,7 @@ public class UserController {
     public String updateCar(@ModelAttribute("user") @Valid User user, BindingResult bindingResult, @RequestParam("id") Long id) {
         if (bindingResult.hasErrors()) {
             // Если есть ошибки валидации, возвращаем страницу с формой редактирования с сообщениями об ошибках
-            return "edit-car";
+            return "edit-user";
         }
         userService.updateUser(id, user);
         return "redirect:/users";

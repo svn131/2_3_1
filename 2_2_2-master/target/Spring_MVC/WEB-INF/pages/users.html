@@ -17,18 +17,18 @@
     <table id="carsTable" class="table table-dark table-bordered">
         <thead>
         <tr>
-            <th scope="col">Model</th>
-            <th scope="col">Series</th>
-            <th scope="col">Color</th>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">City</th>
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="user : ${users}" th:id="'carRow_' + ${user.id}">
-            <td th:text="${user.model}"/>
-            <td th:text="${user.series}"/>
-            <td th:text="${user.color}"/>
+            <td th:text="${user.name}"/>
+            <td th:text="${user.age}"/>
+            <td th:text="${user.city}"/>
             <td>
                 <form method="POST" th:action="@{/users/edit}">
                     <input type="hidden" name="id" th:value="${user.id}">
@@ -47,10 +47,10 @@
 
     <!-- код для кнопки добавления -->
     <form method="POST" th:action="@{/users/add}">
-        <input type="text" name="model" placeholder="Model...">
-        <input type="text" name="series" placeholder="Series...">
-        <input type="text" name="color" placeholder="Color...">
-        <button type="submit">Add Car</button>
+        <input type="text" name="name" placeholder="Name...">
+        <input type="text" name="age" placeholder="Age...">
+        <input type="text" name="city" placeholder="City...">
+        <button type="submit">Add User</button>
     </form>
 
 

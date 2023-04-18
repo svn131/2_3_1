@@ -40,7 +40,7 @@ public class UserDaoImp implements UserDao {
         List<User> subCarsList;
         subCarsList = users;
         for (User user : subCarsList) {
-            messages.add(user.getModel() + " " + user.getSeries() + " " + user.getColor());
+            messages.add(user.getName() + " " + user.getAge() + " " + user.getCity());
         }
         return messages;
     }
@@ -57,9 +57,9 @@ public class UserDaoImp implements UserDao {
     public void updateUser(Long id, User user) {
         User existingUser = entityManager.find(User.class, id);
         if (existingUser != null) {
-            existingUser.setModel(user.getModel());
-            existingUser.setSeries(user.getSeries());
-            existingUser.setColor(user.getColor());
+            existingUser.setName(user.getName());
+            existingUser.setAge(user.getAge());
+            existingUser.setCity(user.getCity());
             entityManager.merge(existingUser);
         }
     }
