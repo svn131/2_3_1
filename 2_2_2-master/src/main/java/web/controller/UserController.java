@@ -27,7 +27,7 @@ public class UserController {
     @GetMapping(value = "/users")
     public String printUsers(ModelMap model) {
         List<User> users = userService.getUsers(Integer.MAX_VALUE);
-        model.addAttribute("users", users); // добавляем в модель список объектов Car
+        model.addAttribute("users", users);
         return "users";
     }
 
