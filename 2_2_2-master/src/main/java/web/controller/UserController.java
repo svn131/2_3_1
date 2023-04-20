@@ -32,9 +32,9 @@ public class UserController {
     }
 
     @PostMapping(value = "/usersTable/add")
-    public String addUser(@RequestParam("name") String model, @RequestParam("age") int series,
-                          @RequestParam("city") String color) {
-        userService.addUser(new User(model, series, color));
+    public String addUser(@RequestParam("name") String name, @RequestParam("age") int age,
+                          @RequestParam("city") String city) {
+        userService.addUser(new User(name, age, city));
         return "redirect:/usersTable";
     }
 
