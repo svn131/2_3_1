@@ -8,8 +8,6 @@ public interface UserDao {
 
     List<User> getListUserFilled();
 
-    List<String> getsubList(String count);
-
     void addUser(User user);
 
     void updateUser(Long id, User user);

@@ -26,19 +26,6 @@ public class UserDaoImp implements UserDao {
     }
 
     @Override
-    public List<String> getsubList(String count) {
-        List<User> users = getListUserFilled();
-        int i = Integer.valueOf(count);
-        List<String> messages = new ArrayList<>();
-        List<User> subCarsList;
-        subCarsList = users;
-        for (User user : subCarsList) {
-            messages.add(user.getName() + " " + user.getAge() + " " + user.getCity());
-        }
-        return messages;
-    }
-
-    @Override
     public void addUser(User user) {
         entityManager.persist(user);
         List<User> users = getListUserFilled();

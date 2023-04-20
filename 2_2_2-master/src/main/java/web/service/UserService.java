@@ -11,7 +11,7 @@ public interface UserService {
     void addUser(User user);
 
 
-    public User getUserById(Long id);
+   User getUserById(Long id);
 
 
     void updateUser(Long id, User user);
