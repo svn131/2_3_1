@@ -38,8 +38,8 @@ public class UserController {
         return "redirect:/usersTable";
     }
 
-    @PostMapping("/usersTable/edit")
-    public String editUser(@RequestParam("id") Long id, ModelMap modelMap) {
+    @PostMapping("/usersTable/showEditForm")
+    public String showEditForm(@RequestParam("id") Long id, ModelMap modelMap) {
         User user = userService.getUserById(id);
         modelMap.addAttribute("user", user);
         return "edit";
@@ -49,7 +49,7 @@ public class UserController {
     @PostMapping("/usersTable/update")
     public String updateUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult, @RequestParam("id") Long id) {
         if (bindingResult.hasErrors()) {
-            return "edit-user";
+            return "fix-form";
         }
         userService.updateUser(id, user);
         return "redirect:/usersTable";
