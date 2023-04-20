@@ -38,7 +38,7 @@ public class UserController {
         return "redirect:/usersTable";
     }
 
-    @PostMapping("/usersTable/showEditForm")
+    @GetMapping ("/usersTable/showEditForm")
     public String showEditForm(@RequestParam("id") Long id, ModelMap modelMap) {
         User user = userService.getUserById(id);
         modelMap.addAttribute("user", user);
