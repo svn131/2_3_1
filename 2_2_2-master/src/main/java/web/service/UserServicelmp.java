@@ -1,6 +1,7 @@
 package web.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import web.dao.UserDao;
 import web.model.User;
 
@@ -16,36 +17,43 @@ public class UserServicelmp implements UserService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<User> getListCarFilled() {
         return userDao.getListUserFilled();
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<String> getsubList(String count) {
         return userDao.getsubList(count);
     }
 
     @Override
+    @Transactional
     public void addUser(User user) {
         userDao.addUser(user);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public User getUserById(Long id) {
         return userDao.getUserById(id);
     }
 
     @Override
+    @Transactional
     public void updateUser(Long id, User user) {
         userDao.updateUser(id, user);
     }
 
     @Override
+    @Transactional
     public void removeUser(Long id) {
         userDao.removeUser(id);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<User> getUsers(int parseInt) {
         return userDao.getUsers(parseInt);
     }

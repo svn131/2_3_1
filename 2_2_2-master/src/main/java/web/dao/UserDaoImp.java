@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@Transactional(readOnly = true)
 @Repository
 public class UserDaoImp implements UserDao {
 
@@ -40,14 +39,12 @@ public class UserDaoImp implements UserDao {
     }
 
     @Override
-    @Transactional
     public void addUser(User user) {
         entityManager.persist(user);
         List<User> users = getListUserFilled();
     }
 
     @Override
-    @Transactional
     public void updateUser(Long id, User user) {
         User existingUser = entityManager.find(User.class, id);
         if (existingUser != null) {
@@ -59,7 +56,6 @@ public class UserDaoImp implements UserDao {
     }
 
     @Override
-    @Transactional
     public void removeUser(Long id) {
         User user = entityManager.find(User.class, id);
         if (user != null) {
@@ -68,7 +64,6 @@ public class UserDaoImp implements UserDao {
     }
 
     @Override
-    @Transactional
     public User getUserById(Long id) {
         return entityManager.find(User.class, id);
     }
