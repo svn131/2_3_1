@@ -5,9 +5,8 @@ import web.model.User;
 import java.util.List;
 
 public interface UserService {
-    List<User> getListCarFilled();
+    List<User> getListUserFilled();
 
-    List<String> getsubList(String count);
 
     void addUser(User user);
 

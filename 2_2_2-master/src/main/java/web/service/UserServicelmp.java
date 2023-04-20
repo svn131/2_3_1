@@ -18,14 +18,8 @@ public class UserServicelmp implements UserService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<User> getListCarFilled() {
+    public List<User> getListUserFilled() {
         return userDao.getListUserFilled();
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public List<String> getsubList(String count) {
-        return userDao.getsubList(count);
     }
 
     @Override

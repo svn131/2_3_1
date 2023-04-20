@@ -50,7 +50,7 @@
     <form method="POST" th:action="@{/users/update}" th:object="${user}" class="car-form">
         <input type="hidden" name="id" th:value="${user.id}"/>
         <div class="row mb-3">
-            <label for="inputModel" class="col-sm-2 col-form-label">Model:</label>
+            <label for="inputModel" class="col-sm-2 col-form-label">Name:</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control is-invalid" id="inputModel" name="name" th:value="${user.name}"
                        th:classappend="${#fields.hasErrors('name')} ? 'is-invalid'"/>
@@ -59,7 +59,7 @@
             </div>
         </div>
         <div class="row mb-3">
-            <label for="inputSeries" class="col-sm-2 col-form-label">Series:</label>
+            <label for="inputSeries" class="col-sm-2 col-form-label">Age:</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control is-invalid" id="inputSeries" name="age" th:value="${user.age}"
                        th:classappend="${#fields.hasErrors('age')} ? 'is-invalid'"/>
@@ -68,7 +68,7 @@
             </div>
         </div>
         <div class="row mb-3">
-            <label for="inputColor" class="col-sm-2 col-form-label">Color:</label>
+            <label for="inputColor" class="col-sm-2 col-form-label">City:</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control is-invalid" id="inputColor" name="city" th:value="${user.city}"
                        th:classappend="${#fields.hasErrors('city')} ? 'is-invalid'"/>
