@@ -30,13 +30,13 @@
             <td th:text="${user.age}"/>
             <td th:text="${user.city}"/>
             <td>
-                <form method="POST" th:action="@{/users/edit}">
+                <form method="POST" th:action="@{/usersTable/edit}">
                     <input type="hidden" name="id" th:value="${user.id}">
                     <button type="submit">Edit</button>
                 </form>
             </td>
             <td>
-                <form method="POST" th:action="@{/users/remove}">
+                <form method="POST" th:action="@{/usersTable/remove}">
                     <input type="hidden" name="id" th:value="${user.id}">
                     <button type="submit">Delete</button>
                 </form>
@@ -46,7 +46,7 @@
     </table>
 
     <!-- код для кнопки добавления -->
-    <form method="POST" th:action="@{/users/add}">
+    <form method="POST" th:action="@{/usersTable/add}">
         <input type="text" name="name" placeholder="Name...">
         <input type="text" name="age" placeholder="Age...">
         <input type="text" name="city" placeholder="City...">

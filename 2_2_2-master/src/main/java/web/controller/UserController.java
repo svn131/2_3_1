@@ -24,21 +24,21 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping(value = "/users")
+    @GetMapping(value = "/usersTable")
     public String printUsers(ModelMap model) {
         List<User> users = userService.getUsers(Integer.MAX_VALUE);
         model.addAttribute("users", users);
-        return "users";
+        return "usersTable";
     }
 
-    @PostMapping(value = "/users/add")
+    @PostMapping(value = "/usersTable/add")
     public String addUser(@RequestParam("name") String model, @RequestParam("age") int series,
                           @RequestParam("city") String color) {
         userService.addUser(new User(model, series, color));
-        return "redirect:/users";
+        return "redirect:/usersTable";
     }
 
-    @PostMapping("/users/edit")
+    @PostMapping("/usersTable/edit")
     public String editUser(@RequestParam("id") Long id, ModelMap modelMap) {
         User user = userService.getUserById(id);
         modelMap.addAttribute("user", user);
@@ -46,20 +46,20 @@ public class UserController {
     }
 
 
-    @PostMapping("/users/update")
+    @PostMapping("/usersTable/update")
     public String updateUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult, @RequestParam("id") Long id) {
         if (bindingResult.hasErrors()) {
             return "edit-user";
         }
         userService.updateUser(id, user);
-        return "redirect:/users";
+        return "redirect:/usersTable";
     }
 
-    @PostMapping("/users/remove")
+    @PostMapping("/usersTable/remove")
     public String removeUser(@RequestParam("id") Long id) {
         userService.removeUser(id);
         System.out.println(id);
-        return "redirect:/users";
+        return "redirect:/usersTable";
     }
 
 }
